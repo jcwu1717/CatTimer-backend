@@ -20,9 +20,11 @@ app.use(session({
 }));
 
 // serve static files
-app.use('/', express.static(path.join(__dirname, '/')));
+// app.use('/', express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// OAuth2 client factory
+
+// OAuth2 client factory 本地執行時，REDIRECT_URI 預設為 http://localhost:3000/auth/google/callback
 function createOAuthClient() {
   const clientId = process.env.CLIENT_ID;
   const clientSecret = process.env.CLIENT_SECRET;
@@ -109,6 +111,6 @@ app.post('/create-event', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server start running`);
 });
 

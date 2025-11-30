@@ -1,0 +1,113 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>超慢跑計時器</title>
+  <meta name="description" content="Q 版橘色短毛貓運動計時器 — 設定、開始、暫停、匯出到 Google 日曆" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="navbar" aria-label="主要導覽">
+      <a class="brand" href="#" aria-label="首頁 — 超慢跑計時器">超慢跑計時器</a>
+      <a class="brand" href="#" aria-label="設定計時器" id="open-timer">設定計時器</a>
+      <a class="brand" href="#" aria-label="匯出到Google日曆" id="open-export">匯出到Google日曆</a>
+    </div>
+  </header>
+
+  <main id="main" class="main" role="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content" style="display: flex;">
+        <h1 id="hero-title">準備好了嗎？一起跟橘貓跑起來！</h1>
+        <p class="lead">設定你的運動時間，按開始讓小貓計時。完成後可匯出到 Google 日曆記錄運動。</p>
+        <div class="hero-cta">
+          <!-- 將原本的 SVG 改成你的圖片 -->
+        <img 
+            src="/hero-img.png" 
+            alt="穿著運動服、準備跑步的橘色短毛貓" 
+            class="hero-image"
+        />
+        </div>
+      </div>
+      
+    </section>
+
+    <section class="timer-section" aria-labelledby="timer-title">
+      <h2 id="timer-title">計時器</h2>
+        <div class="mode-switch">
+        <button id="mode-timer" class="mode-btn active" aria-pressed="true">倒數計時器</button>
+        </div>
+
+      <div class="timer-controls" id="timer-controls">
+        <div class="time-control-input">
+            
+            <input id="minutes" type="number" min="0" max="999" value="0" inputmode="numeric" aria-label="設定分鐘">
+            <label for="minutes">分</label>
+
+            <input id="seconds" type="number" min="0" max="59" value="0" inputmode="numeric" aria-label="設定秒">
+            <label for="seconds">秒</label>
+        </div>
+        <div class="display" id="time-display" aria-live="polite">00:00</div>
+
+        <div class="btn-row" role="group" aria-label="計時器控制">
+          <button id="start-btn" class="btn primary">開始</button>
+          <button id="pause-btn" class="btn" disabled>暫停</button>
+          <!-- <button id="reset-btn" class="btn" disabled>重設</button> -->
+        </div>
+        
+
+        <!-- Metronome Section -->
+        <section class="metronome-section" aria-labelledby="metronome-title">
+        <h3 id="metronome-title">超慢跑節拍器（180 BPM）</h3>
+
+        <div class="metronome-controls">
+            <button id="metronome-start" class="btn primary">播放節拍器</button>
+            <button id="metronome-stop" class="btn ghost" disabled>停止</button>
+        </div>
+
+        <!-- <audio id="metronome-sound" src="/metronome_out.wav" preload="auto"></audio> -->
+        </section>
+       </div>
+       </section>
+      <div class="records" aria-labelledby="records-title">
+        <h3 id="records-title">運動記錄</h3>
+        <ul id="records-list" aria-live="polite">
+          <!-- 動態插入記錄 -->
+        </ul>
+      </div>
+    
+  </main>
+
+  
+
+  <!-- Modal: 匯出到 Google 日曆 -->
+  <div id="export-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="export-modal-title">
+    <div class="modal-content" role="document">
+      <h2 id="export-modal-title">匯出到 Google 日曆</h2>
+      <p>選擇要匯出的記錄，按下「匯出」。第一次會導向 Google OAuth 登入。按Esc離開。</p>
+
+      <label for="select-record">選擇記錄</label>
+      <select id="select-record" aria-label="選擇要匯出的運動記錄">
+        <option value="">— 無 —</option>
+      </select>
+
+      <div class="btn-row">
+        <button id="confirm-export" class="btn primary">匯出到 Google 日曆</button>
+        
+      </div>
+    </div>
+  </div>
+
+  
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> 運動計時器 • 記得暖身哦！</p>
+      <small>今天的汗水，是明天的微笑。</small>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
